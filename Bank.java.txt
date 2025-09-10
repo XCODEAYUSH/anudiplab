@@ -1,0 +1,47 @@
+class Bank {
+    // Instance variable
+    double amount;
+
+    // Parameterized constructor
+    Bank(double amount) {
+        this.amount = amount;
+    }
+
+    // Withdraw method
+    void withdraw(double withdrawalAmount) {
+        String message = (withdrawalAmount <= amount) 
+                         ? "Withdrawal successful" 
+                         : "Insufficient balance";
+
+        System.out.println(message);
+
+        // Update amount only if sufficient balance
+        amount = (withdrawalAmount <= amount) ? (amount - withdrawalAmount) : amount;
+    }
+
+    // Deposit method
+    void deposit(double depositAmount) {
+        amount += depositAmount;
+        System.out.println("Deposit successful: " + depositAmount);
+    }
+
+    // Display balance
+    void displayBalance() {
+        System.out.println("Total Balance: " + amount);
+    }
+
+    // Main method to test
+    public static void main(String[] args) {
+        // Initializing with 10000
+        Bank bank = new Bank(10000);
+
+        // Withdraw 5000
+        bank.withdraw(5000);
+
+        // Deposit 5000
+        bank.deposit(5000);
+
+        // Final Balance
+        bank.displayBalance();
+    }
+}
